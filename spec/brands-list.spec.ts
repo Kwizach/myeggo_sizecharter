@@ -16,7 +16,6 @@ describe("BrandsList Class", () => {
         myClass.firstPage = content;
         brandListSub = myClass.listOfBrand$.subscribe(
             (res: BrandsInfo[]) => {
-                console.log(res);
                 expect(res.length).toEqual(2);
                 done();
             }
