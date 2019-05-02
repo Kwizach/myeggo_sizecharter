@@ -1,0 +1,35 @@
+image: node:latest
+
+# Cache modules in between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+stages:
+  - init
+  - build
+  - tests
+
+init:
+  stage: init
+  script:
+    - rm -rf node-modules
+    - npm install
+
+build:
+  stage: build
+  script:
+    - npm run-script build
+  artifacts:
+    expire_in: '60 sec'
+    paths:
+      - dist/
+    
+    
+tests:
+  stage: tests
+  script:
+    - npm test
+  dependencies:
+    - build

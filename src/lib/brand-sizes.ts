@@ -32,7 +32,7 @@ export class BrandSizes {
     public brandSize$:      ReplaySubject<BrandContent> = new ReplaySubject<BrandContent>(1);
 
     constructor(cookie: string, brand: BrandsInfo) {
-        console.log(brand.name);
+        //console.log(brand.name);
 
         this._url = brand.url;
         this._brandContent = {
@@ -100,7 +100,7 @@ export class BrandSizes {
 
         $allTables.each(
             (idx: number, el: CheerioElement) => {
-                const section: string = el.parent.children[1].firstChild.data.replace('.', '');
+                const section: string = el.parent.children[1].firstChild.data.replace('.', '').trim();
                 
                 if(genderContent[section] === undefined) genderContent[section] = [];
                 
