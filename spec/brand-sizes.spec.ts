@@ -46,7 +46,7 @@ describe("BrandSizes Class", () => {
         );
     });
 
-    afterAll( () => {
-        brandSizeSub.unsubscribe();
+    afterEach( () => {
+        if(brandSizeSub) brandSizeSub.unsubscribe();
     });
 });
