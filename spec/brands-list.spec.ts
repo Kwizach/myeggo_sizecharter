@@ -12,16 +12,6 @@ describe("BrandsList Class", () => {
         content = '<ul id="list"><li><a href="totoH">totoD</a></li><li><a href="tutuH">tutuD</a></li></ul>'
     });
 
-    it("Confirm parser return 2 elements", (done) => {
-        myClass.firstPage = content;
-        brandListSub = myClass.listOfBrand$.subscribe(
-            (res: BrandsInfo[]) => {
-                expect(res.length).toEqual(2);
-                done();
-            }
-        );
-    });
-
     it("Confirm 1st element name to be totoD", (done) => {
         myClass.firstPage = content;
         brandListSub = myClass.listOfBrand$.subscribe(
@@ -32,11 +22,11 @@ describe("BrandsList Class", () => {
         );
     });
 
-    it("Confirm 1st element url to be totoH", (done) => {
+    it("Confirm 2nd element url to be tutuH", (done) => {
         myClass.firstPage = content;
         brandListSub = myClass.listOfBrand$.subscribe(
             (res: BrandsInfo[]) => {
-                expect(res[0].url).toEqual('totoH');
+                expect(res[1].url).toEqual('tutuH');
                 done();
             }
         );
