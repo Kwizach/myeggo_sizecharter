@@ -12,10 +12,11 @@ describe("BrandsList Class", () => {
         content = '<ul id="list"><li><a href="totoH">totoD</a></li><li><a href="tutuH">tutuD</a></li></ul>'
     });
 
-    it("Confirm parser return 2 element", (done) => {
+    it("Confirm parser return 2 elements", (done) => {
         myClass.firstPage = content;
         brandListSub = myClass.listOfBrand$.subscribe(
             (res: BrandsInfo[]) => {
+                console.log(res);
                 expect(res.length).toEqual(2);
                 done();
             }
