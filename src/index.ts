@@ -11,7 +11,7 @@ const siteRequester: Requester = new Requester(COOKIE);
 const brands: BrandsList = new BrandsList();
 
 // Create a new MongoClient
-const client: MongoClient = new MongoClient( MONGO_URL, {useNewUrlParser: true } );
+const client: MongoClient = new MongoClient( MONGO_URL, { useNewUrlParser: true } );
 let db: Db;
 
 /**
@@ -61,7 +61,7 @@ function queryBrand(brands: BrandsInfo[], idx: number) {
 
 
 // Let's GO !!!
-siteRequester.getUrl('/brands/');
+// siteRequester.getUrl('/brands/');
 
 client.connect(
     (err, client) => {
