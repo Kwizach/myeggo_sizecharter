@@ -36,11 +36,12 @@ tests:
 
 deploy:
   stage: deploy
+  dependencies:
+    - build
   before_script:
     - rm -rf node_modules
     - npm ci --only=production
   script:
-    - tsc -p tsconfig.production.json
     - docker build -t registry.myeggo.com/3rd-parties/sizecharter .
     - docker push registry.myeggo.com/3rd-parties/sizecharter
 
