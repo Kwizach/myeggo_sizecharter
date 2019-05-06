@@ -13,11 +13,12 @@ stages:
   - init
   - build
   - tests
+  - deploy
 
 init:
   stage: init
   script:
-    - rm -rf node-modules
+    - rm -rf node_modules
     - npm install
 
 build:
@@ -29,10 +30,21 @@ build:
     paths:
       - dist/
     
-    
 tests:
   stage: tests
   script:
     - npm test
   dependencies:
     - build
+
+deploy:
+  stage: deploy
+  before_script:
+    - rm -rf node_modules
+    - npm ci --only=production
+  script:
+    - tsc -p tsconfig.production.json
+    - docker build -t registry.myeggo.com/3rd-parties/sizecharter .
+    - docker push registry.myeggo.com/3rd-parties/sizecharter
+
+  

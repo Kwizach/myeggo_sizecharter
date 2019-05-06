@@ -72,6 +72,8 @@ client.connect(
         console.log("Connected correctly to mongod server");
     
         db = client.db("sizecharter");
+        // backup existing collection before we get a new one
+        db.renameCollection('brands', 'brands.previous', { dropTarget: true });
     
         siteRequester.getUrl('/brands/');
     }
