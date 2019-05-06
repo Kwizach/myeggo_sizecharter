@@ -38,7 +38,13 @@ deploy:
   stage: deploy
   dependencies:
     - build
+  image: docker:git
+  services:
+  - docker:dind
+  # variables:
+  #   DOCKER_DRIVER: overlay
   before_script:
+    - docker info
     - rm -rf node_modules
     - npm ci --only=production
   script:
